@@ -1,0 +1,9 @@
+parameters:
+    sonata.block.service.filter_form.class: Pandora\SyliusFilterBundle\Block\Service\FilterFormBlockService
+
+services:
+    sonata.block.service.filter_form:
+        class: %sonata.block.service.filter_form.class%
+        arguments: ['sonata.block.service.filter_form', "@templating", "@form.factory"]
+        tags:
+            - { name: sonata.block }

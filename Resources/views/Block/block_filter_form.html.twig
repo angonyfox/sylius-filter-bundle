@@ -1,0 +1,37 @@
+{% extends sonata_block.templates.block_base %}
+
+{% form_theme form _self %}
+
+{% block block %}
+{{ form(form) }}
+{% endblock %}
+
+{% block form_row -%}
+    {{- form_label(form) -}}
+    {#- form_errors(form) -#}
+    <div {%- if id is not empty %} id="{{ id }}-popover" {% endif -%} class="hide">
+    {{- form_widget(form) -}}
+    </div>
+{%- endblock form_row %}
+
+{% block widget_container_attributes -%}
+    {%- for attrname, attrvalue in attr -%}
+    {{- " " -}}
+        {%- if attrname in ['placeholder', 'title'] -%}
+            {{- attrname }}="{{ attrvalue|trans({}, translation_domain) }}"
+        {%- elseif attrvalue is sameas(true) -%}
+            {{- attrname }}="{{ attrname }}"
+        {%- elseif attrvalue is not sameas(false) -%}
+            {{- attrname }}="{{ attrvalue }}"
+        {%- endif -%}
+    {%- endfor -%}
+{%- endblock widget_container_attributes %}
+
+{% block form_label -%}
+    {% if label is not sameas(false) -%}
+    {% if label is empty -%}
+        {% set label = name|humanize %}
+    {%- endif -%}
+    <button class="btn filter" data-toggle="popover" data-filter-container="#{{ id }}-popover">{{ label|trans({}, translation_domain) }}:  <span class="caret"></span></button>
+    {%- endif %}
+{%- endblock form_label %}
