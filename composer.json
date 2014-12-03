@@ -1,0 +1,25 @@
+{
+    "name" : "pandora/sylius-filter-bundle",
+    "description" : "Easily creating filters for SyliusResourceBundle",
+    "type" : "symfony-bundle",
+    "authors" : [{
+        "name" : "angonyfox",
+        "email" : "angonyfox@gmail.com"
+        }],
+        "keywords" : [
+            "sylius, syliusresourcebundle, filter"
+        ],
+        "license" : [
+            "MIT"
+        ],
+        "require" : {
+            "php": ">=5.3.3",
+            "sylius/resource": "0.12.*@dev",
+        },
+        "autoload" : {
+            "psr-0" : {
+                "Pandora\\SyliusFilterBundle" : ""
+            }
+        },
+        "target-dir" : "Pandora/SyliusFilterBundle",
+    }
